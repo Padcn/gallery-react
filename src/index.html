@@ -6,11 +6,34 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="../styles/btnStyle.css" media="screen" type="text/css" />
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+  integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
+  crossorigin="anonymous"></script>
 </head>
 <body>
   <div id="app">APPLICATION CONTENT</div>
-
+  <div class="topCenter"><input class="btn btn-gray btn-small" value="STOP" type="button"  onclick="playerController(this)"/></div>
+  <div id="player">
+    <iframe hidden="hidden"frameborder="no" border="0" marginwidth="0"
+            marginheight="0" src="//music.163.com/outchain/player?type=2&id=421885589&auto=1&height=32"></iframe>
+  </div>
   <script>__REACT_DEVTOOLS_GLOBAL_HOOK__ = parent.__REACT_DEVTOOLS_GLOBAL_HOOK__</script>
   <script type="text/javascript" src="/assets/app.js"></script>
+  <script type="text/javascript">
+    var isRun=true;
+    function playerController(btn){
+      var html="<iframe hidden=\"true\" frameborder=\"no\" border=\"0\" marginwidth=\"0\" marginheight=\"0\" src=\"//music.163.com/outchain/player?type=2&id=421885589&auto=1&height=32\"></iframe>";
+            if(isRun){
+                $("#player").empty();
+                isRun=false;
+                btn.value="PLAY";
+            }else {
+                $("#player").append(html);
+                isRun=true;
+                btn.value="STOP";
+            }
+    }
+  </script>
 </body>
 </html>
